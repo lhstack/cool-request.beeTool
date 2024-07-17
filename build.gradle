@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version "1.10.1"
+}
+
+group = 'com.lhstack'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    maven{
+        url 'https://nexus.ourteam.com/repository/dev-maven-public/'
+    }
+    mavenCentral()
+}
+
+intellij {
+    version.set('2022.1')
+    type.set("IC")
+    plugins.addAll("com.intellij.java", "properties", "org.jetbrains.plugins.yaml","org.intellij.groovy")
+    updateSinceUntilBuild.set(true)
+}
+
+dependencies {
+    implementation(fileTree(relativeProjectPath("/libs")))
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+
+//jar.from {
+//    configurations.compileClasspath.findAll {
+//        false
+//    }.collect {
+//        // 处理搜索结果
+//        zipTree it
+//    }
+//}
+
+//publishPlugin {
+//    token.set(System.getenv("PUBLISH_TOKEN"))
+//}
+
+test {
+    useJUnitPlatform()
+}
