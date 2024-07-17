@@ -1,8 +1,0 @@
-com.lhstack.tabbed.encoding.actions.Base64EncodingAction
-com.lhstack.tabbed.encoding.actions.Base64DecoderAction
-com.lhstack.tabbed.encoding.actions.HexDecodingAction
-com.lhstack.tabbed.encoding.actions.HexEncodingAction
-com.lhstack.tabbed.encoding.actions.Base32DecodingAction
-com.lhstack.tabbed.encoding.actions.Base32EncodingAction
-com.lhstack.tabbed.encoding.actions.Md5Action
-com.lhstack.tabbed.encoding.actions.GroovyScriptAction

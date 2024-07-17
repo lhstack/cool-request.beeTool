@@ -38,7 +38,9 @@ public class EncodingTabbedView implements TabbedView {
         targetTextField.setEnabled(false);
         BaseEncodingAction[] comboBoxActions = new BaseEncodingAction[0];
         try {
-            List<BaseEncodingAction> actions = Spi.getInstances("encoding.actions", BaseEncodingAction.class);
+            List<BaseEncodingAction> actions = Spi.scan(clazz -> {
+                return !clazz.getName().equals(BaseEncodingAction.class.getName());
+            }, BaseEncodingAction.class,"com.lhstack.tabbed.encoding.actions");
             actions.sort(Comparator.comparing(BaseEncodingAction::ordered));
             comboBoxActions = new BaseEncodingAction[actions.size()];
             for (int i = 0; i < actions.size(); i++) {
